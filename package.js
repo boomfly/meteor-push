@@ -8,7 +8,7 @@ Package.describe({
 
 Npm.depends({
   'firebase-admin': '8.13.0',
-  firebase: '7.23.0',
+  firebase: '7.24.0',
   events: '3.2.0'
 })
 
@@ -21,7 +21,7 @@ Package.onUse(api => {
   api.versionsFrom('1.8')
   api.use(['ecmascript'])
 
-  api.use(['tracker'], ['web.browser', 'web.cordova'])
+  api.use(['tracker', 'reactive-var'], ['web.browser', 'web.cordova'])
   api.use(['accounts-base'], ['web.browser', 'web.cordova', 'server'], { weak: true })
 
   api.use([
