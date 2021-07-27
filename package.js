@@ -18,7 +18,7 @@ Cordova.depends({
 })
 
 Package.onUse(api => {
-  api.versionsFrom('1.8')
+  // api.versionsFrom('1.8')
   api.use(['ecmascript'])
 
   api.use(['tracker', 'reactive-var'], ['web.browser', 'web.cordova'])
