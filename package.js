@@ -1,7 +1,7 @@
 /* globals Package, Npm, Cordova */
 Package.describe({
   name: 'activitree:push',
-  version: '2.0.8',
+  version: '3.0.0',
   summary: 'Push Notifications for Cordova and Web/PWA with Firebase (FCM).',
   git: 'https://github.com/activitree/meteor-push.git'
 })
@@ -19,7 +19,7 @@ Cordova.depends({
 
 Package.onUse(api => {
   // api.versionsFrom('1.8')
-  api.use(['ecmascript'])
+  // api.use(['ecmascript'])
 
   api.use(['tracker', 'reactive-var'], ['web.browser', 'web.cordova'])
   api.use(['accounts-base'], ['web.browser', 'web.cordova', 'server'], { weak: true })
@@ -35,10 +35,11 @@ Package.onUse(api => {
   api.use('mongo', 'server')
 
   // API's
-  api.addFiles('lib/server/pushToDevice.js', 'server')
-  api.addFiles('lib/server/internalMethods.js', 'server')
+  // api.addFiles('lib/server/pushToDevice.js', 'server')
+  api.mainModule('lib/server/index.js', 'server')
+  // api.addFiles('lib/server/methods.js', 'server')
 
   api.mainModule('lib/client/cordova.js', ['web.cordova'])
   api.mainModule('lib/client/web.js', ['web.browser'])
-  api.mainModule('lib/server/pushToDB.js', ['server'])
+  // api.mainModule('lib/server/pushToDB.js', ['server'])
 })
