@@ -13,14 +13,13 @@ Npm.depends({
 })
 
 Cordova.depends({
-  '@havesource/cordova-plugin-push': '2.0.0',
+  '@havesource/cordova-plugin-push': '3.0.0',
   // '@havesource/cordova-plugin-push': 'file://./imports/ui/lib/cordova-plugin-push',
   'cordova-plugin-device': '2.0.3'
 })
 
 Package.onUse(api => {
-  // api.versionsFrom('1.8')
-  // api.use(['ecmascript'])
+  // api.versionsFrom(['1.8', '2.3'])
 
   api.use(['tracker', 'reactive-var'], ['web.browser', 'web.cordova'])
   api.use(['accounts-base'], ['web.browser', 'web.cordova', 'server'])
