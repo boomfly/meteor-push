@@ -7,7 +7,7 @@ Package.describe({
 })
 
 Npm.depends({
-  'firebase-admin': '8.13.0',
+  'firebase-admin': '12.7.0',
   firebase: '7.24.0',
   events: '3.2.0'
 })
