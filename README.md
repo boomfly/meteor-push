@@ -78,6 +78,18 @@ Copy the worker file in the Example /public to your public folder. This needs to
 You can import two hooks: ``` import { webPushSubscribe, webPushUnsubscribe } from 'meteor/activitree:push' ```
 Find the example in example/handle_WebPush_In_UX/Notification.js (React version). The method used for sending the message is at imports/api/collection/notifications/methods.js
 
+# Token state (web and Cordova)
+`Push.tokenState()` returns what happened to this installation's push token, `{status, error?}` or `undefined` when nothing has happened yet; `Push.on('tokenState', state => …)` fires on every change. The state is kept in localStorage next to the token.
+
+| status | meaning |
+|---|---|
+| `unsupported` | web only: no service worker / Push API / Firebase config, or `getMessaging` failed |
+| `failed` | `getToken` failed (web), the plugin raised `error` (Cordova), or saving the token on the server returned an error; `error` holds the reason |
+| `pending` | the token was obtained and sent to the server, no answer yet (a dropped DDP connection keeps the call queued; a page reload loses it) |
+| `saved` | the server confirmed the token |
+
+Notification permission is not part of the state — check it separately.
+
 # IOS
 After IOS Build, go to /app/.meteor/local/cordova-build/platforms/ios and (if you use Terminal) run 'pod install'. After this, in XCode, update the IOS version for each and every pod installed.
 
