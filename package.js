@@ -13,7 +13,7 @@ Npm.depends({
 })
 
 Cordova.depends({
-  '@havesource/cordova-plugin-push': 'https://github.com/boomfly/cordova-plugin-push.git#d64c795be7cf47b0eec08645981d0226c8b7aa7e',
+  '@havesource/cordova-plugin-push': 'https://github.com/boomfly/cordova-plugin-push.git#4a1c1bddd2cfb2cea7a3efab52b2b5d707fbd2c4',
   // '@havesource/cordova-plugin-push': 'file://./imports/ui/lib/cordova-plugin-push',
   'cordova-plugin-device': '2.0.3'
 })
