@@ -90,6 +90,13 @@ Find the example in example/handle_WebPush_In_UX/Notification.js (React version)
 
 Notification permission is not part of the state — check it separately.
 
+# Lazy Firebase (web)
+`firebase/app` and `firebase/messaging` are not in the package bundle: they are loaded with `import()` (a separate dynamic chunk) only when push is used. `Push.config()` does cheap synchronous checks only and loads Firebase right away just when `Notification.permission` is already `granted`; otherwise the first `subscribe()` / `unsubscribe()` loads it (`subscribe()` asks for permission first, then loads).
+
+- `await Push.isSupported()` — can this browser receive web push with the given config; resolves after `config()`, does not load Firebase. Use it to decide whether to offer notifications.
+- `Push._ready` (legacy: `await Push._ready` then `!!Push.messaging`) still works, but awaiting it loads Firebase. `Push.messaging` is set only after Firebase is loaded.
+- `Push.showNotification()` / `Push.getNotifications()` never load Firebase; they wait for a load in flight.
+
 # IOS
 After IOS Build, go to /app/.meteor/local/cordova-build/platforms/ios and (if you use Terminal) run 'pod install'. After this, in XCode, update the IOS version for each and every pod installed.
 
